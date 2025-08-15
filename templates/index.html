@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Text Analysis Suite</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-bg"></div>
+            <h1>AI Text Analysis Suite</h1>
+            <p class="subtitle">Advanced text summarization and intelligent question answering powered by AI</p>
+        </header>
+
+        <div class="tabs">
+            <div class="tab active" onclick="switchTab('summarizer', event)">📄 Text Summarizer</div>
+            <div class="tab" onclick="switchTab('qa', event)">❓ Question Answering</div>
+        </div>
+
+        <!-- Text Summarizer Panel -->
+        <div id="summarizer" class="content-panel active">
+            <div class="card">
+                <h2>Text Summarization</h2>
+                <div class="settings">
+                    <div class="setting-group">
+                        <label for="maxLength">Max Length</label>
+                        <input type="number" id="maxLength" value="150" min="50" max="500">
+                    </div>
+                    <div class="setting-group">
+                        <label for="minLength">Min Length</label>
+                        <input type="number" id="minLength" value="30" min="10" max="200">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="textInput">Enter your text to summarize</label>
+                    <textarea id="textInput"></textarea>
+                </div>
+                <button class="btn" onclick="summarizeText()">✨ Generate Summary</button>
+                <div id="summaryResult" class="result">
+                    <div class="result-empty">Your summary will appear here...</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Question Answering Panel -->
+        <div id="qa" class="content-panel">
+            <div class="card">
+                <h2>Question Answering</h2>
+                <div class="form-group">
+                    <label for="contextInput">Context Text</label>
+                    <textarea id="contextInput"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="questionInput">Your Question</label>
+                    <input type="text" id="questionInput">
+                </div>
+                <button class="btn" onclick="answerQuestion()">🔍 Find Answer</button>
+                <div id="qaResult" class="result">
+                    <div class="result-empty">The answer will appear here...</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Powered by BART-Large-CNN and RoBERTa-Base-SQuAD2</p>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
